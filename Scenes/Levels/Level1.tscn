@@ -80,4 +80,4 @@ tile_set = ExtResource("1_qjy1y")
 position = Vector2(871, 4)
 
 [node name="Fuel" parent="." unique_id=1075416144 instance=ExtResource("8_8h4de")]
-position = Vector2(1572, 1)
+position = Vector2(1143, 561)

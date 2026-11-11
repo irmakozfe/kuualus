@@ -1,26 +1,34 @@
 [gd_scene format=3 uid="uid://docnn278vned"]
 
 [ext_resource type="Script" uid="uid://cxttkgshagjtq" path="res://Code/LandingPad.cs" id="1_4gn4t"]
+[ext_resource type="Texture2D" uid="uid://bj7vjctrc57jw" path="res://Art/Characters/LandingPad.png" id="2_6wwte"]
+[ext_resource type="Texture2D" uid="uid://dgr8ipdwofeso" path="res://Art/Characters/LandingPadForeground.png" id="3_tg3vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7bj4"]
-size = Vector2(140, 12)
+size = Vector2(140, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ib3d7"]
 size = Vector2(140, 60)
 
 [node name="LandingPad" type="StaticBody2D" unique_id=826116055]
+scale = Vector2(0.7, 1)
 collision_layer = 2
 script = ExtResource("1_4gn4t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1224167118]
-shape = SubResource("RectangleShape2D_g7bj4")
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1152901806]
+offset_left = -79.0
+offset_top = -30.0
+offset_right = 3080.9998
+offset_bottom = 719.99994
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_6wwte")
+region_rect = Rect2(0, 0, 1774, 887)
+patch_margin_left = 645
+patch_margin_right = 645
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=590565167]
-offset_left = -70.0
-offset_top = -6.0
-offset_right = 70.0
-offset_bottom = 6.0
-color = Color(0.16078432, 0.76862746, 0.29803923, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1224167118]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_g7bj4")
 
 [node name="LandingZone" type="Area2D" parent="." unique_id=1907336926]
 collision_layer = 0
@@ -28,3 +36,15 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingZone" unique_id=1482454022]
 position = Vector2(0, -36)
 shape = SubResource("RectangleShape2D_ib3d7")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=630718979]
+z_index = 1
+offset_left = -79.0
+offset_top = -30.0
+offset_right = 3080.9998
+offset_bottom = 719.99994
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_tg3vo")
+region_rect = Rect2(0, 0, 1774, 887)
+patch_margin_left = 645
+patch_margin_right = 645
