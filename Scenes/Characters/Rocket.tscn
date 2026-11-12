@@ -61,6 +61,7 @@ _bulletSpeed = 300.0
 
 [node name="FlameParticle" type="CPUParticles2D" parent="." unique_id=905752771]
 position = Vector2(0, 39)
+emitting = false
 amount = 100
 lifetime = 0.27
 lifetime_randomness = 0.72

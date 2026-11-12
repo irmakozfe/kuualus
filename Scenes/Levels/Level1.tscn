@@ -81,3 +81,10 @@ position = Vector2(871, 4)
 
 [node name="Fuel" parent="." unique_id=1075416144 instance=ExtResource("8_8h4de")]
 position = Vector2(1143, 561)
+
+[node name="AntiAirCraftGun2" parent="." unique_id=1061533797 instance=ExtResource("7_ns3so")]
+position = Vector2(1451.9999, 334.99994)
+rotation = -1.0120375
+
+[node name="AntiAirCraftGun3" parent="." unique_id=1543556052 instance=ExtResource("7_ns3so")]
+position = Vector2(2264, 85)
