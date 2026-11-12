@@ -37,6 +37,7 @@ namespace Thrust.Levels
 
             _landingZone.BodyEntered += OnBodyEntered;
             _landingZone.BodyExited += OnBodyExited;
+            LandingSucceeded += OnLandingSuccessful;
         }
 
         public override void _PhysicsProcess(double delta)

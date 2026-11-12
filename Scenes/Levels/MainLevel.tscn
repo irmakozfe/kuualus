@@ -27,6 +27,7 @@ RocketSize = 0.65
 [node name="LandingPad" parent="." unique_id=826116055 node_paths=PackedStringArray("Crate") instance=ExtResource("3_lnwy5")]
 position = Vector2(2051, 112)
 Crate = NodePath("../Crate")
+CargoMass = 0.8
 
 [node name="LandingNotification" type="CanvasLayer" parent="." unique_id=357075434]
 
