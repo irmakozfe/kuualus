@@ -33,6 +33,9 @@ namespace Thrust.Characters
 		[Export] private float _fuelConsumptionRate = 1;
 		private float _fuel;
 
+		// CARGO
+		private float _cargoMass = 0;
+
 		// THRUST
 		[Export] private CpuParticles2D _flameParticles;
 		[Export] public float ThrustRampSpeed = 4;
@@ -75,6 +78,12 @@ namespace Thrust.Characters
 				GD.Print($"Rocket fuel: {_fuel}/{_maxFuel} should be decreased to {value}");
 				EmitSignal(SignalName.FuelChanged, _fuel, _maxFuel);
 			}
+		}
+
+		public bool HasCargo
+		{
+			get;
+			private set;
 		}
 
 		public bool IsDead
@@ -194,6 +203,7 @@ namespace Thrust.Characters
 			}
 		}
 
+		#region Accessors
 		public void Refuel(int amount)
 		{
 			if (IsDead){ return; }
@@ -203,6 +213,20 @@ namespace Thrust.Characters
 		{
 			if (IsDead){ return; }
 			Fuel -= amount;
+		}
+
+		public void LoadCargo(float mass)
+		{
+			_cargoMass = mass;
+			Mass += mass;
+			HasCargo = true;
+		}
+
+		public void UnloadCargo()
+		{
+			Mass -= _cargoMass;
+			_cargoMass = 0;
+			HasCargo = false;
 		}
 
 		public void TakeDamage(int amount)
@@ -237,6 +261,7 @@ namespace Thrust.Characters
 			GetTree().CurrentScene.AddChild(explosion);
 			
 		}
+		#endregion Accessors
 
 		private void OnExplosionFinished()
 		{

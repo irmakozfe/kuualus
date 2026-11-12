@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using Godot;
 using Thrust.Characters;
+using Thrust.Systems;
 
 namespace Thrust.Levels
 {
@@ -8,16 +10,26 @@ namespace Thrust.Levels
         [Signal]
         public delegate void LandingSucceededEventHandler();
 
-        [Export] public float MaxLandingSpeed = 20f;
+        [Export] public float MaxLandingSpeed = 20f; // TODO: See if this does anything
         [Export] public float MaxAngularSpeed = 10f;
         [Export] public float MaxUprightAngle = 15f;
         [Export] public float RequiredStableTime = 2.0f;
+        
+        // CARGO
+        [Export] public bool IsDeliveryPad = false;
+        [Export] public Sprite2D Crate = null;
+        [Export] public float CargoMass = 2;
+        [Export] public int DeliveryPoints = 500;
+        [Export] private Line2D _beam = null;
 
         private Area2D _landingZone;
         private Rocket _rocket;
         private bool _isTouching;
         private bool _landingSuccessful;
         private float _stableTime;
+
+        // CARGO
+        private bool _isLoading = false;
 
         public override void _Ready()
         {
@@ -134,5 +146,55 @@ namespace Thrust.Levels
                 GD.Print("Rocket left landing zone");
             }
         }
+        #region Private
+        private async void OnLandingSuccessful()
+        {
+            if (_isLoading) return;
+
+            if (Crate != null && !_rocket.HasCargo)
+            {
+                await LoadCargo();
+            }
+            else if (IsDeliveryPad && _rocket.HasCargo)
+            {
+                _rocket.UnloadCargo();
+                // TODO: Add points through GameManager
+                GameManager.Instance.AddScore(DeliveryPoints);
+            }
+        }
+
+        private async Task LoadCargo()
+        {
+            _isLoading = true;
+
+            _rocket.LinearVelocity = Vector2.Zero;
+            _rocket.AngularVelocity = 0f;
+            _rocket.SetDeferred(RigidBody2D.PropertyName.Freeze, true);
+
+            _beam.Points = new[]
+            {
+                _beam.ToLocal(Crate.GlobalPosition),
+                _beam.ToLocal(_rocket.GlobalPosition)
+            };
+
+            var tween = CreateTween();
+            tween.TweenProperty(_beam, "width", 6, .2);
+            tween.TweenProperty(Crate, "global_position", _rocket.GlobalPosition, 1.0)
+                .SetTrans(Tween.TransitionType.Sine)
+                .SetEase(Tween.EaseType.InOut);
+            tween.Parallel().TweenProperty(Crate, "scale", Vector2.Zero, 1.0);
+            tween.TweenProperty(_beam, "width", 0, .2);
+
+            await ToSignal(tween, Tween.SignalName.Finished);
+
+            Crate.QueueFree();
+            Crate = null;
+
+            _rocket.LoadCargo(CargoMass);
+            _rocket.SetDeferred(RigidBody2D.PropertyName.Freeze, false);
+
+            _isLoading = false;
+        }
+        #endregion Private
     }
 }
