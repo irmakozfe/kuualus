@@ -9,6 +9,8 @@ namespace Thrust.Levels
     {
         [Signal]
         public delegate void LandingSucceededEventHandler();
+        [Signal]
+        public delegate void CargoLoadedEventHandler();
 
         [Export] public float MaxLandingSpeed = 20f; // TODO: See if this does anything
         [Export] public float MaxAngularSpeed = 10f;
@@ -174,16 +176,16 @@ namespace Thrust.Levels
 
             _beam.Points = new[]
             {
-                _beam.ToLocal(Crate.GlobalPosition),
-                _beam.ToLocal(_rocket.GlobalPosition)
+                _beam.ToLocal(_rocket.GlobalPosition),
+                _beam.ToLocal(Crate.GlobalPosition)
             };
 
             var tween = CreateTween();
-            tween.TweenProperty(_beam, "width", 6, .2);
+            tween.TweenProperty(_beam, "width", 16, .2);
             tween.TweenProperty(Crate, "global_position", _rocket.GlobalPosition, 1.0)
                 .SetTrans(Tween.TransitionType.Sine)
                 .SetEase(Tween.EaseType.InOut);
-            tween.Parallel().TweenProperty(Crate, "scale", Vector2.Zero, 1.0);
+            tween.Parallel().TweenProperty(Crate, "scale", new Vector2(.01f,.01f), 1.0);
             tween.TweenProperty(_beam, "width", 0, .2);
 
             await ToSignal(tween, Tween.SignalName.Finished);
@@ -195,6 +197,7 @@ namespace Thrust.Levels
             _rocket.SetDeferred(RigidBody2D.PropertyName.Freeze, false);
 
             _isLoading = false;
+            EmitSignal(SignalName.CargoLoaded);
         }
         #endregion Private
     }
