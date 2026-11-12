@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1hju74v7ecby" path="res://Scenes/HUD/HUD.tscn" id="4_gr4ap"]
 [ext_resource type="Script" uid="uid://ejt5y18f2odc" path="res://Code/UI/HUD.cs" id="5_pdwyb"]
 [ext_resource type="AudioStream" uid="uid://w4xrrlu1hmg3" path="res://Audio/jimgor33-timelapse-164084.wav" id="6_rqyoi"]
+[ext_resource type="Texture2D" uid="uid://rqmwsur4ifx0" path="res://Art/Characters/Crate.png" id="7_sx5r3"]
 
 [node name="MainLevel" type="Node2D" unique_id=1186891382]
 
@@ -13,6 +14,7 @@
 position = Vector2(15, -1)
 
 [node name="Rocket" parent="." unique_id=1384398106 instance=ExtResource("1_3auna")]
+z_index = 10
 position = Vector2(351, 241)
 collision_mask = 3
 gravity_scale = 0.08
@@ -23,8 +25,10 @@ MaxLinearSpeed = 180.0
 MaxAngularSpeed = 300.0
 RocketSize = 0.65
 
-[node name="LandingPad" parent="." unique_id=826116055 instance=ExtResource("3_lnwy5")]
+[node name="LandingPad" parent="." unique_id=826116055 node_paths=PackedStringArray("Crate") instance=ExtResource("3_lnwy5")]
 position = Vector2(2051, 112)
+Crate = NodePath("../Crate")
+CargoMass = 0.8
 
 [node name="LandingNotification" type="CanvasLayer" parent="." unique_id=357075434]
 
@@ -54,12 +58,38 @@ offset_right = 69.0
 offset_bottom = 17.0
 scale = Vector2(2, 2)
 
+[node name="CargoNotification" type="CanvasLayer" parent="." unique_id=1441838582]
+
+[node name="CargoLabel" type="Label" parent="CargoNotification" unique_id=1691550758]
+visible = false
+offset_left = 170.0
+offset_top = 20.0
+offset_right = 470.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = "CARGO LOADED!"
+horizontal_alignment = 1
+
+[node name="HideTimer" type="Timer" parent="CargoNotification" unique_id=1394066568]
+wait_time = 2.5
+one_shot = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=20119157]
 stream = ExtResource("6_rqyoi")
 autoplay = true
 
+[node name="Crate" type="Sprite2D" parent="." unique_id=1850974009]
+z_index = 5
+position = Vector2(2117, 107)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("7_sx5r3")
+
+[connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
+[connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]
+[connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/HideTimer" method="start"]
 [connection signal="LandingSucceeded" from="LandingPad" to="LandingNotification/SuccessLabel" method="show"]
 [connection signal="LandingSucceeded" from="LandingPad" to="LandingNotification/HideTimer" method="start"]
 [connection signal="timeout" from="LandingNotification/HideTimer" to="LandingNotification/SuccessLabel" method="hide"]
+[connection signal="timeout" from="CargoNotification/HideTimer" to="CargoNotification/CargoLabel" method="hide"]
 
 [editable path="HUD"]
