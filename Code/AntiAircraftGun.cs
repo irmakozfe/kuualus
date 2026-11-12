@@ -11,7 +11,6 @@ public partial class AntiAircraftGun : StaticBody2D, IDamageable
 		[Export] private float _range = 300f;
 		[Export] private float _speed = 2.5f;
 		[Export] private Node2D _headPivot;
-		[Export] private Vector2 _direction = new Vector2(1,-1);
 		[Export] private Gun _gun;
 		[Export] private float _fireTolerance = 0.1f;
 		[Export] private PackedScene _explosionScene;
@@ -23,9 +22,6 @@ public partial class AntiAircraftGun : StaticBody2D, IDamageable
 
 		public float Range{get {return _range;}}
 		public float Speed{get {return _speed;}}
-
-		public Vector2 Direction{get {return _direction;}}
-
 		
 
 		public override void _Ready()
