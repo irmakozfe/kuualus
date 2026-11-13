@@ -79,6 +79,10 @@ namespace Thrust.Characters
 				EmitSignal(SignalName.FuelChanged, _fuel, _maxFuel);
 			}
 		}
+		public float MaxFuel
+		{
+			get { return _maxFuel; }
+		}
 
 		public bool HasCargo
 		{
@@ -244,6 +248,8 @@ namespace Thrust.Characters
 
 		private void Explode()
 		{
+			_flameParticles.Emitting = false;
+
 			EmitSignal(SignalName.Exploded);
 
 			SetDeferred(RigidBody2D.PropertyName.Freeze, true);

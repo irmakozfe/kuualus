@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bngrvbx8c63h6"]
 
 [ext_resource type="Script" uid="uid://caecl2lnsqa6i" path="res://Code/Fuel.cs" id="1_ji4le"]
-[ext_resource type="Texture2D" uid="uid://cyfaus1g35tcv" path="res://Art/Characters/Futuristic Amber Energy Canister.png" id="1_kst74"]
+[ext_resource type="Texture2D" uid="uid://ci82suh145hvp" path="res://Art/Characters/FuelBlue.png" id="2_ji4le"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6s6k"]
 radius = 11.0
-height = 44.0
+height = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6s6k"]
 size = Vector2(44, 19)
@@ -13,12 +13,13 @@ size = Vector2(44, 19)
 [node name="Fuel" type="StaticBody2D" unique_id=1075416144 node_paths=PackedStringArray("_fuelArea")]
 collision_layer = 2
 script = ExtResource("1_ji4le")
+_fuelAmount = 30
 _fuelArea = NodePath("Area2D")
 
 [node name="FuturisticAmberEnergyCanister" type="Sprite2D" parent="." unique_id=1447969216]
-position = Vector2(4.7683716e-07, -13)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_kst74")
+position = Vector2(0.50000167, -13)
+scale = Vector2(0.04227734, 0.05)
+texture = ExtResource("2_ji4le")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1392899251]
 position = Vector2(0, -12)

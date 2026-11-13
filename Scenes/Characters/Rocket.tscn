@@ -21,7 +21,7 @@ offsets = PackedFloat32Array(0.0066006603, 1)
 colors = PackedColorArray(1, 1, 0.011764706, 1, 1, 0.03137255, 0.03529412, 1)
 
 [node name="Rocket" type="RigidBody2D" unique_id=1384398106 node_paths=PackedStringArray("_gun", "_flameParticles") groups=["rocket"]]
-gravity_scale = 0.05
+gravity_scale = 0.04
 contact_monitor = true
 max_contacts_reported = 8
 linear_damp_mode = 1
@@ -29,6 +29,7 @@ linear_damp = 0.4
 angular_damp_mode = 1
 angular_damp = 2.0
 script = ExtResource("1_dp6tq")
+MaxAngularSpeed = 200.0
 _gun = NodePath("Muzzle")
 _explosionScene = ExtResource("2_m0ktp")
 _flameParticles = NodePath("FlameParticle")
