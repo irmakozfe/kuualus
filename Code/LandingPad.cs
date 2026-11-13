@@ -185,7 +185,7 @@ namespace Thrust.Levels
             tween.TweenProperty(Crate, "global_position", _rocket.GlobalPosition, 1.0)
                 .SetTrans(Tween.TransitionType.Sine)
                 .SetEase(Tween.EaseType.InOut);
-            tween.Parallel().TweenProperty(Crate, "scale", new Vector2(.01f,.01f), 1.0);
+            tween.Parallel().TweenProperty(Crate, "scale", Crate.Scale * .7f, 1.0);
             tween.TweenProperty(_beam, "width", 0, .2);
 
             await ToSignal(tween, Tween.SignalName.Finished);
