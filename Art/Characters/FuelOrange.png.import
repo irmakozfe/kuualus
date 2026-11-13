@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyfaus1g35tcv"
-path="res://.godot/imported/Futuristic Amber Energy Canister.png-9acd2387dbdc62464fe2e4801290c6c3.ctex"
+uid="uid://v5trsao20gte"
+path="res://.godot/imported/FuelOrange.png-5f3460067fc4113f7bef11c695432d56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/Futuristic Amber Energy Canister.png"
-dest_files=["res://.godot/imported/Futuristic Amber Energy Canister.png-9acd2387dbdc62464fe2e4801290c6c3.ctex"]
+source_file="res://Art/Characters/FuelOrange.png"
+dest_files=["res://.godot/imported/FuelOrange.png-5f3460067fc4113f7bef11c695432d56.ctex"]
 
 [params]
 
