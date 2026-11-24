@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5ufmr8uva50l" path="res://Code/Effects/Explosion.cs" id="1_5nv22"]
 [ext_resource type="Texture2D" uid="uid://cowwj3o2ujqre" path="res://Art/Effects/turret_explosion.png" id="1_itmd7"]
+[ext_resource type="AudioStream" uid="uid://bwryf106wnnnd" path="res://Audio/turret_explosion.wav" id="3_tagy1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tagy1"]
 atlas = ExtResource("1_itmd7")
@@ -81,10 +82,14 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="TurretExplosion" type="AnimatedSprite2D" unique_id=894698670]
+[node name="TurretExplosion" type="AnimatedSprite2D" unique_id=894698670 node_paths=PackedStringArray("_explosionSound")]
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_itmd7")
 animation = &"explode"
 frame = 9
 frame_progress = 1.0
 script = ExtResource("1_5nv22")
+_explosionSound = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=101377608]
+stream = ExtResource("3_tagy1")

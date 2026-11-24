@@ -12,3 +12,5 @@ Audio Links:
 		
 	https://pixabay.com/music/techno-trance-timelapse-164084/
 		by jimgor33
+
+	turret_explosion.wav and rocket_explosion.wav from Claude 
