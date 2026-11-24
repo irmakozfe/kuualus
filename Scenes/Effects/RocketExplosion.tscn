@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5ufmr8uva50l" path="res://Code/Effects/Explosion.cs" id="1_72qxd"]
 [ext_resource type="Texture2D" uid="uid://bxkguwo8sd2lf" path="res://Art/Effects/rocket_explosion.png" id="1_gbojw"]
+[ext_resource type="AudioStream" uid="uid://3xmka5aru2c7" path="res://Audio/rocket_explosion.wav" id="3_lsb1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsb1q"]
 atlas = ExtResource("1_gbojw")
@@ -81,7 +82,11 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="RocketExplosion" type="AnimatedSprite2D" unique_id=440664472]
+[node name="RocketExplosion" type="AnimatedSprite2D" unique_id=440664472 node_paths=PackedStringArray("_explosionSound")]
 sprite_frames = SubResource("SpriteFrames_hkege")
 animation = &"explode"
 script = ExtResource("1_72qxd")
+_explosionSound = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=443631237]
+stream = ExtResource("3_lsb1q")
