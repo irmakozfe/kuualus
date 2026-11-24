@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bis2gpipwt8rp" path="res://Art/Characters/TurretBarrel.png" id="3_37uyi"]
 [ext_resource type="Script" uid="uid://dx6giwja3vlqr" path="res://Code/Combat/Gun.cs" id="4_37uyi"]
 [ext_resource type="PackedScene" uid="uid://intgjycx5rah" path="res://Scenes/Characters/Bullet.tscn" id="5_a8g63"]
+[ext_resource type="AudioStream" uid="uid://c7mhibjyer3su" path="res://SoundEffects/turret_shoot.wav" id="7_ct7l3"]
 
 [node name="AntiAirCraftGun" type="StaticBody2D" unique_id=1520185745 node_paths=PackedStringArray("_headPivot", "_gun")]
 scale = Vector2(0.5, 0.5)
@@ -34,7 +35,12 @@ rotation = -1.5742869
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_37uyi")
 
-[node name="Muzzle" type="Node2D" parent="HeadPivot" unique_id=585331926]
+[node name="Muzzle" type="Node2D" parent="HeadPivot" unique_id=585331926 node_paths=PackedStringArray("_fireSound")]
 position = Vector2(-0.7999954, -75)
 script = ExtResource("4_37uyi")
 _bulletScene = ExtResource("5_a8g63")
+_fireSound = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HeadPivot/Muzzle" unique_id=191106180]
+stream = ExtResource("7_ct7l3")
+volume_db = -6.0

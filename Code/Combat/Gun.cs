@@ -8,6 +8,7 @@ public partial class Gun : Node2D
 	[Export] private float _cooldown = 1.2f;
 
 	[Export] private float _bulletSpeed = 0f;
+	[Export] private AudioStreamPlayer2D _fireSound;
 	
 	private float _cooldownLeft;
 	public bool CanFire
@@ -47,6 +48,7 @@ public partial class Gun : Node2D
 		GetTree().CurrentScene.AddChild(bullet);
 		bullet.Launch(GlobalPosition, direction);
 
+		_fireSound?.Play();
 		_cooldownLeft = _cooldown;
 		
 		return true;
