@@ -83,8 +83,8 @@ position = Vector2(806, 5)
 position = Vector2(1051, 577)
 
 [node name="AntiAirCraftGun2" parent="." unique_id=1061533797 instance=ExtResource("7_ns3so")]
-position = Vector2(880, 277.00006)
-rotation = -0.7294594
+position = Vector2(926.99994, 130.99997)
+rotation = -2.3436046
 
 [node name="AntiAirCraftGun3" parent="." unique_id=1543556052 instance=ExtResource("7_ns3so")]
 position = Vector2(2268, 77)
