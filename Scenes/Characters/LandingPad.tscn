@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://docnn278vned"]
 
-[ext_resource type="Script" uid="uid://cxttkgshagjtq" path="res://Code/LandingPad.cs" id="1_4gn4t"]
+[ext_resource type="Script" uid="uid://cxttkgshagjtq" path="res://Code/CargoPad.cs" id="1_4gn4t"]
 [ext_resource type="Texture2D" uid="uid://bj7vjctrc57jw" path="res://Art/Characters/LandingPad.png" id="2_6wwte"]
 [ext_resource type="Texture2D" uid="uid://dgr8ipdwofeso" path="res://Art/Characters/LandingPadForeground.png" id="3_tg3vo"]
 
@@ -17,6 +17,13 @@ colors = PackedColorArray(0.24661055, 0.46834952, 1, 1, 0, 0.59607846, 0.6, 0)
 scale = Vector2(0.7, 1)
 collision_layer = 2
 script = ExtResource("1_4gn4t")
+MaxLandingSpeed = null
+MaxAngularSpeed = null
+MaxUprightAngle = null
+RequiredStableTime = null
+IsDeliveryPad = null
+CargoMass = null
+DeliveryPoints = null
 _beam = NodePath("Line2D")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1152901806]

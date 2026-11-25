@@ -5,7 +5,7 @@ using Thrust.Systems;
 
 namespace Thrust.Levels
 {
-    public partial class LandingPad : StaticBody2D
+    public partial class CargoPad : StaticBody2D
     {
         [Signal]
         public delegate void LandingSucceededEventHandler();

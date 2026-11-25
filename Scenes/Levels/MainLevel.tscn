@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://rqmwsur4ifx0" path="res://Art/Characters/Crate.png" id="7_sx5r3"]
 [ext_resource type="Texture2D" uid="uid://d3rdbd1hu1k61" path="res://Art/HealthBar/healthbar_progress_blue.png" id="8_gkceq"]
 [ext_resource type="Script" uid="uid://r3kkpmpyss1u" path="res://Scenes/Levels/FuelBar.cs" id="9_gkceq"]
+[ext_resource type="Script" uid="uid://cd3mxnmexseyk" path="res://Code/DeliveryPad.cs" id="12_7woyo"]
 
 [node name="MainLevel" type="Node2D" unique_id=1186891382]
 
@@ -106,11 +107,11 @@ position = Vector2(2709, 139)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("7_sx5r3")
 
-[connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
-[connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]
-[connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/HideTimer" method="start"]
-[connection signal="LandingSucceeded" from="LandingPad" to="LandingNotification/SuccessLabel" method="show"]
-[connection signal="LandingSucceeded" from="LandingPad" to="LandingNotification/HideTimer" method="start"]
+[node name="LandingPad2" parent="." unique_id=20506285 instance=ExtResource("3_lnwy5")]
+position = Vector2(-17, 112)
+scale = Vector2(0.65, 1)
+script = ExtResource("12_7woyo")
+
 [connection signal="timeout" from="LandingNotification/HideTimer" to="LandingNotification/SuccessLabel" method="hide"]
 [connection signal="timeout" from="CargoNotification/HideTimer" to="CargoNotification/CargoLabel" method="hide"]
 
