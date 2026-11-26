@@ -20,7 +20,7 @@ position = Vector2(15, -1)
 
 [node name="Rocket" parent="." unique_id=1384398106 instance=ExtResource("1_3auna")]
 z_index = 10
-position = Vector2(-18, 67)
+position = Vector2(2814, -59)
 collision_mask = 3
 gravity_scale = 0.08
 linear_damp = 0.04
@@ -35,6 +35,10 @@ RocketSize = 0.65
 position = Vector2(2812, 160)
 Crate = NodePath("../Crate")
 CargoMass = 0.8
+MaxLandingSpeed = 20.0
+MaxAngularSpeed = 10.0
+MaxUprightAngle = 15.0
+RequiredStableTime = 2.0
 
 [node name="LandingNotification" type="CanvasLayer" parent="." unique_id=357075434]
 
@@ -112,6 +116,10 @@ position = Vector2(-17, 112)
 scale = Vector2(0.65, 1)
 script = ExtResource("12_7woyo")
 
+[connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
+[connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]
+[connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/HideTimer" method="start"]
+[connection signal="LandingSucceeded" from="LandingPad" to="LandingNotification/SuccessLabel" method="show"]
 [connection signal="timeout" from="LandingNotification/HideTimer" to="LandingNotification/SuccessLabel" method="hide"]
 [connection signal="timeout" from="CargoNotification/HideTimer" to="CargoNotification/CargoLabel" method="hide"]
 
