@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bwryf106wnnnd"
-path="res://.godot/imported/turret_explosion.wav-956d9b71c35c87019d3af2e4b0a7a99a.sample"
+path="res://.godot/imported/turret_explosion.wav-8cdce4d50b10bc962ce517ce3e5f56e2.sample"
 
 [deps]
 
-source_file="res://Audio/turret_explosion.wav"
-dest_files=["res://.godot/imported/turret_explosion.wav-956d9b71c35c87019d3af2e4b0a7a99a.sample"]
+source_file="res://SoundEffects/turret_explosion.wav"
+dest_files=["res://.godot/imported/turret_explosion.wav-8cdce4d50b10bc962ce517ce3e5f56e2.sample"]
 
 [params]
 

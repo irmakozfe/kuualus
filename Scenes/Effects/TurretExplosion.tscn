@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5ufmr8uva50l" path="res://Code/Effects/Explosion.cs" id="1_5nv22"]
 [ext_resource type="Texture2D" uid="uid://cowwj3o2ujqre" path="res://Art/Effects/turret_explosion.png" id="1_itmd7"]
-[ext_resource type="AudioStream" uid="uid://bwryf106wnnnd" path="res://Audio/turret_explosion.wav" id="3_tagy1"]
+[ext_resource type="AudioStream" uid="uid://bwryf106wnnnd" path="res://SoundEffects/turret_explosion.wav" id="3_tagy1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tagy1"]
 atlas = ExtResource("1_itmd7")
