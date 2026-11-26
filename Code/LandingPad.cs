@@ -94,6 +94,10 @@ namespace Thrust.Levels
                 speed <= MaxLandingSpeed &&
                 angularSpeed <= MaxAngularSpeed &&
                 uprightAngle <= MaxUprightAngle;
+            
+            GD.Print($"[{Name}] speed={speed:F1}/{MaxLandingSpeed}, " +
+         $"angular={angularSpeed:F1}/{MaxAngularSpeed}, " +
+         $"angle={uprightAngle:F1}/{MaxUprightAngle}, stable={isStable}, time={_stableTime:F2}");
 
             // Require continuous stability
             if (isStable)
@@ -104,7 +108,7 @@ namespace Thrust.Levels
                 {
                     _landingSuccessful = true;
 
-                    GD.Print("LANDING SUCCESSFUL!");
+                    GD.Print("LANDING SUCCESSFUL on {Name} ({GetType().Name})!");
                     EmitSignal(SignalName.LandingSucceeded);
                 }
             }

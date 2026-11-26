@@ -20,7 +20,7 @@ position = Vector2(15, -1)
 
 [node name="Rocket" parent="." unique_id=1384398106 instance=ExtResource("1_3auna")]
 z_index = 10
-position = Vector2(2814, -59)
+position = Vector2(-18, 50)
 collision_mask = 3
 gravity_scale = 0.08
 linear_damp = 0.04
@@ -115,6 +115,12 @@ texture = ExtResource("7_sx5r3")
 position = Vector2(-17, 112)
 scale = Vector2(0.65, 1)
 script = ExtResource("12_7woyo")
+DeliveryPoints = 500
+IsLastLevel = true
+MaxLandingSpeed = 20.0
+MaxAngularSpeed = 10.0
+MaxUprightAngle = 15.0
+RequiredStableTime = 2.0
 
 [connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
 [connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]
