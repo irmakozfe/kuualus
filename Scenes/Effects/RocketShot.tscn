@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cdupjre23aus3"]
+
+[ext_resource type="AudioStream" uid="uid://dw516vjh5n5o2" path="res://SoundEffects/rocket_shoot.wav" id="1_c4din"]
+
+[node name="RocketShot" type="Node2D" unique_id=1516950137]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1315272130]
+stream = ExtResource("1_c4din")
+volume_db = -8.0

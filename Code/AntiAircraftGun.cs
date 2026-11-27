@@ -13,7 +13,6 @@ public partial class AntiAircraftGun : StaticBody2D, IDamageable
 		[Export] private Node2D _headPivot;
 		[Export] private Gun _gun;
 		[Export] private float _fireTolerance = 0.1f;
-		[Export] private PackedScene _explosionScene;
 
 		private bool _isDestroyed = false;
 		private Rocket _rocket;
@@ -81,12 +80,7 @@ public partial class AntiAircraftGun : StaticBody2D, IDamageable
 
 			_isDestroyed = true;
 
-			if(_explosionScene != null)
-			{
-				Explosion explosion = _explosionScene.Instantiate<Explosion>();
-				explosion.GlobalPosition = GlobalPosition;
-				GetTree().CurrentScene.AddChild(explosion);
-			}
+			EffectPlayer.Current?.PlayEffect(EffectType.TurretExplosion, GlobalPosition);
 			//TODO: (maybe) add score to the rocket
 			QueueFree();
 		}

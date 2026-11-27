@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b2sl1w747gcp6"]
+
+[ext_resource type="Script" uid="uid://d0j8xkd7m842m" path="res://Code/Effects/EffectPlayer.cs" id="1_kr6yb"]
+[ext_resource type="Resource" uid="uid://56vdyn3puewk" path="res://Data/Effects/EffectMap.tres" id="2_dolfw"]
+
+[node name="EffectPlayer" type="Node2D" unique_id=324544998]
+script = ExtResource("1_kr6yb")
+_effectMap = ExtResource("2_dolfw")
+metadata/_custom_type_script = "uid://d0j8xkd7m842m"

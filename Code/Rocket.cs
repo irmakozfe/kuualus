@@ -21,7 +21,6 @@ namespace Thrust.Characters
 		
 		// COMBAT
 		[Export] private Gun _gun ;
-		[Export] private PackedScene _explosionScene;
   
 		// HEALTH
 		[Export] private int _maxHealth = 3;
@@ -255,17 +254,13 @@ namespace Thrust.Characters
 			SetDeferred(RigidBody2D.PropertyName.Freeze, true);
 			SetDeferred(CollisionObject2D.PropertyName.CollisionLayer,0);
 
-			if(_explosionScene == null)
+			if (EffectPlayer.Current == null)
 			{
 				GameManager.Instance.LostGame();
 				return;
 			}
 
-			Explosion explosion = _explosionScene.Instantiate<Explosion>();
-			explosion.GlobalPosition = GlobalPosition;
-			explosion.Finished += OnExplosionFinished;
-			GetTree().CurrentScene.AddChild(explosion);
-			
+			EffectPlayer.Current.PlayEffect(EffectType.RocketExplosion, GlobalPosition, OnExplosionFinished);			
 		}
 		#endregion Accessors
 
