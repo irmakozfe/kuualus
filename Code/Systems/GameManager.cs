@@ -39,6 +39,7 @@ namespace Thrust.Systems
 			new InGameState(),
 			new SettingsState(),
 			new GameOverState(),
+			new WinState(),
 			new PauseState(),
 		};
 		private GameStateBase _nextState = null;
@@ -169,7 +170,7 @@ namespace Thrust.Systems
 
 			return true;
 		}
-		public void EndGame()
+		public void LostGame()
 		{
 			if (!ChangeState(GameStateType.GameOver))
 			{
@@ -177,6 +178,22 @@ namespace Thrust.Systems
 			}
 			GD.Print("Game Over!");
 			EmitSignal(SignalName.GameOver);
+		}
+		public void NextLevel()
+		{
+			if (!ChangeState(GameStateType.InGame, force: true))
+			{
+				GD.PushError("Failed to change state to InGame.");
+			}
+			GD.Print("Next Level!");
+		}
+		public void FinishGame()
+		{
+			if (!ChangeState(GameStateType.Win))
+			{
+				GD.PushError("Failed to change state to Win.");
+			}
+			GD.Print("Game Finished!");
 		}
 		public void AddScore(int amount)
 		{

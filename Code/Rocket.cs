@@ -256,7 +256,7 @@ namespace Thrust.Characters
 
 			if (EffectPlayer.Current == null)
 			{
-				GameManager.Instance.EndGame();
+				GameManager.Instance.LostGame();
 				return;
 			}
 
@@ -266,7 +266,7 @@ namespace Thrust.Characters
 
 		private void OnExplosionFinished()
 		{
-			GameManager.Instance.EndGame();
+			GameManager.Instance.LostGame();
 		}
 
 		private void UpdateFlameParticles(float thrustLevel)
