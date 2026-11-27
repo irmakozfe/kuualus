@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://rqmwsur4ifx0" path="res://Art/Characters/Crate.png" id="7_sx5r3"]
 [ext_resource type="Texture2D" uid="uid://d3rdbd1hu1k61" path="res://Art/HealthBar/healthbar_progress_blue.png" id="8_gkceq"]
 [ext_resource type="Script" uid="uid://r3kkpmpyss1u" path="res://Scenes/Levels/FuelBar.cs" id="9_gkceq"]
-[ext_resource type="PackedScene" uid="uid://b2sl1w747gcp6" path="res://Scenes/Effects/EffectPlayer.tscn" id="12_7woyo"]
+[ext_resource type="PackedScene" uid="uid://b2sl1w747gcp6" path="res://Scenes/Effects/EffectPlayer.tscn" id="13_effpl"]
 [ext_resource type="Script" uid="uid://cd3mxnmexseyk" path="res://Code/DeliveryPad.cs" id="12_7woyo"]
 
 [node name="MainLevel" type="Node2D" unique_id=1186891382]
@@ -112,9 +112,9 @@ position = Vector2(2709, 139)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("7_sx5r3")
 
-<<<<<<< HEAD
-[node name="EffectPlayer" parent="." unique_id=324544998 instance=ExtResource("12_7woyo")]
-=======
+
+[node name="EffectPlayer" parent="." unique_id=324544998 instance=ExtResource("13_effpl")]
+
 [node name="LandingPad2" parent="." unique_id=20506285 instance=ExtResource("3_lnwy5")]
 position = Vector2(-17, 112)
 scale = Vector2(0.65, 1)
@@ -125,7 +125,7 @@ MaxLandingSpeed = 20.0
 MaxAngularSpeed = 10.0
 MaxUprightAngle = 15.0
 RequiredStableTime = 2.0
->>>>>>> 77b9d9a613413e69fca246fbc3a4c98177e454c1
+
 
 [connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
 [connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]
