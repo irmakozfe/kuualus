@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://cfrmp4m70w0gi"]
 
 [ext_resource type="Script" uid="uid://c0fxy4j7fdy8" path="res://Code/AntiAircraftGun.cs" id="1_r7qv3"]
-[ext_resource type="PackedScene" uid="uid://c7cc463mgj8ki" path="res://Scenes/Effects/TurretExplosion.tscn" id="2_2p0qm"]
 [ext_resource type="Texture2D" uid="uid://dld0rs0s8har1" path="res://Art/Characters/TurretBase.png" id="2_jcjf3"]
 [ext_resource type="Texture2D" uid="uid://bis2gpipwt8rp" path="res://Art/Characters/TurretBarrel.png" id="3_37uyi"]
 [ext_resource type="Script" uid="uid://dx6giwja3vlqr" path="res://Code/Combat/Gun.cs" id="4_37uyi"]
 [ext_resource type="PackedScene" uid="uid://intgjycx5rah" path="res://Scenes/Characters/Bullet.tscn" id="5_a8g63"]
-[ext_resource type="AudioStream" uid="uid://c7mhibjyer3su" path="res://SoundEffects/turret_shoot.wav" id="7_ct7l3"]
 
 [node name="AntiAirCraftGun" type="StaticBody2D" unique_id=1520185745 node_paths=PackedStringArray("_headPivot", "_gun")]
 scale = Vector2(0.5, 0.5)
@@ -14,7 +12,6 @@ collision_layer = 4
 script = ExtResource("1_r7qv3")
 _headPivot = NodePath("HeadPivot")
 _gun = NodePath("HeadPivot/Muzzle")
-_explosionScene = ExtResource("2_2p0qm")
 
 [node name="TurretBase" type="Sprite2D" parent="." unique_id=104928191]
 position = Vector2(0.79999536, -20)
@@ -35,12 +32,8 @@ rotation = -1.5742869
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_37uyi")
 
-[node name="Muzzle" type="Node2D" parent="HeadPivot" unique_id=585331926 node_paths=PackedStringArray("_fireSound")]
+[node name="Muzzle" type="Node2D" parent="HeadPivot" unique_id=585331926]
 position = Vector2(-0.7999954, -75)
 script = ExtResource("4_37uyi")
 _bulletScene = ExtResource("5_a8g63")
-_fireSound = NodePath("AudioStreamPlayer2D")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HeadPivot/Muzzle" unique_id=191106180]
-stream = ExtResource("7_ct7l3")
-volume_db = -6.0
+_fireEffect = 4

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="EffectMap" format=3 uid="uid://56vdyn3puewk"]
+
+[ext_resource type="PackedScene" uid="uid://dscurty2u3co4" path="res://Scenes/Effects/RocketExplosion.tscn" id="1_6oim2"]
+[ext_resource type="Script" uid="uid://dwnfsk44qqyi2" path="res://Code/Effects/EffectMap.cs" id="1_8bdso"]
+[ext_resource type="Script" uid="uid://ddepeq4j5qfkq" path="res://Code/Effects/EffectSceneEntry.cs" id="2_w6yvd"]
+[ext_resource type="PackedScene" uid="uid://c7cc463mgj8ki" path="res://Scenes/Effects/TurretExplosion.tscn" id="3_qdsb4"]
+[ext_resource type="PackedScene" uid="uid://cdupjre23aus3" path="res://Scenes/Effects/RocketShot.tscn" id="4_qdsb4"]
+[ext_resource type="PackedScene" uid="uid://cpipaca3lv3an" path="res://Scenes/Effects/TurretShot.tscn" id="5_qey8j"]
+
+[sub_resource type="Resource" id="Resource_xxh82"]
+script = ExtResource("2_w6yvd")
+EffectType = 1
+EffectScene = ExtResource("1_6oim2")
+metadata/_custom_type_script = "uid://ddepeq4j5qfkq"
+
+[sub_resource type="Resource" id="Resource_iqxvs"]
+script = ExtResource("2_w6yvd")
+EffectType = 2
+EffectScene = ExtResource("3_qdsb4")
+metadata/_custom_type_script = "uid://ddepeq4j5qfkq"
+
+[sub_resource type="Resource" id="Resource_sn03e"]
+script = ExtResource("2_w6yvd")
+EffectType = 3
+EffectScene = ExtResource("4_qdsb4")
+metadata/_custom_type_script = "uid://ddepeq4j5qfkq"
+
+[sub_resource type="Resource" id="Resource_sm3n7"]
+script = ExtResource("2_w6yvd")
+EffectType = 4
+EffectScene = ExtResource("5_qey8j")
+metadata/_custom_type_script = "uid://ddepeq4j5qfkq"
+
+[resource]
+script = ExtResource("1_8bdso")
+_entries = Array[Object]([SubResource("Resource_xxh82"), SubResource("Resource_iqxvs"), SubResource("Resource_sn03e"), SubResource("Resource_sm3n7")])
+metadata/_custom_type_script = "uid://dwnfsk44qqyi2"

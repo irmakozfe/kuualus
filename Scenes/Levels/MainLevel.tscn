@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://rqmwsur4ifx0" path="res://Art/Characters/Crate.png" id="7_sx5r3"]
 [ext_resource type="Texture2D" uid="uid://d3rdbd1hu1k61" path="res://Art/HealthBar/healthbar_progress_blue.png" id="8_gkceq"]
 [ext_resource type="Script" uid="uid://r3kkpmpyss1u" path="res://Scenes/Levels/FuelBar.cs" id="9_gkceq"]
+[ext_resource type="PackedScene" uid="uid://b2sl1w747gcp6" path="res://Scenes/Effects/EffectPlayer.tscn" id="12_7woyo"]
 
 [node name="MainLevel" type="Node2D" unique_id=1186891382]
 
@@ -105,6 +106,8 @@ z_index = 5
 position = Vector2(2709, 139)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("7_sx5r3")
+
+[node name="EffectPlayer" parent="." unique_id=324544998 instance=ExtResource("12_7woyo")]
 
 [connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
 [connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]

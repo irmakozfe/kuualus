@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ftk7uv31i8pc" path="res://Code/Rocket.cs" id="1_dp6tq"]
 [ext_resource type="Texture2D" uid="uid://cv14gkvawes05" path="res://Art/Characters/rocket.png" id="2_dp6tq"]
-[ext_resource type="PackedScene" uid="uid://dscurty2u3co4" path="res://Scenes/Effects/RocketExplosion.tscn" id="2_m0ktp"]
 [ext_resource type="Script" uid="uid://dx6giwja3vlqr" path="res://Code/Combat/Gun.cs" id="3_x18n3"]
 [ext_resource type="PackedScene" uid="uid://cvba72dd6mgdg" path="res://Scenes/Characters/RocketBullet.tscn" id="4_esc57"]
-[ext_resource type="AudioStream" uid="uid://dw516vjh5n5o2" path="res://SoundEffects/rocket_shoot.wav" id="6_5ixrd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x18n3"]
 radius = 11.0
@@ -32,7 +30,6 @@ angular_damp = 2.0
 script = ExtResource("1_dp6tq")
 MaxAngularSpeed = 200.0
 _gun = NodePath("Muzzle")
-_explosionScene = ExtResource("2_m0ktp")
 _flameParticles = NodePath("FlameParticle")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=905169067 groups=["rocket"]]
@@ -54,18 +51,13 @@ shape = SubResource("RectangleShape2D_m0ktp")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1397288641]
 offset = Vector2(0, 70)
 
-[node name="Muzzle" type="Node2D" parent="." unique_id=1510080786 node_paths=PackedStringArray("_fireSound")]
+[node name="Muzzle" type="Node2D" parent="." unique_id=1510080786]
 position = Vector2(0, -42)
 script = ExtResource("3_x18n3")
 _bulletScene = ExtResource("4_esc57")
 _cooldown = 0.1
 _bulletSpeed = 300.0
-_fireSound = NodePath("AudioStreamPlayer2D")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Muzzle" unique_id=731998350]
-stream = ExtResource("6_5ixrd")
-volume_db = -8.0
-max_polyphony = 3
+_fireEffect = 3
 
 [node name="FlameParticle" type="CPUParticles2D" parent="." unique_id=905752771]
 position = Vector2(0, 39)
