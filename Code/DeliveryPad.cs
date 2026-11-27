@@ -7,6 +7,7 @@ namespace Thrust.Levels
 	public partial class DeliveryPad : LandingPad
 	{
 		[Export] public int DeliveryPoints = 500;
+		// HACK: This should be removed when a level map system is implemented
 		[Export] public bool IsLastLevel = true;
 
 		protected override void OnLandingSucceeded()
