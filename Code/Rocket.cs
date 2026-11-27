@@ -75,7 +75,7 @@ namespace Thrust.Characters
 			{ 
 				float clamped = Mathf.Clamp(value, 0, _maxFuel);
 				_fuel = clamped; 
-				GD.Print($"Rocket fuel: {_fuel}/{_maxFuel} should be decreased to {value}");
+				// GD.Print($"Rocket fuel: {_fuel}/{_maxFuel} should be decreased to {value}");
 				EmitSignal(SignalName.FuelChanged, _fuel, _maxFuel);
 			}
 		}
