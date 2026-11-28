@@ -3,6 +3,7 @@ using Godot;
 using Thrust.Combat;
 using Thrust.Configuration;
 using Thrust.Effects;
+using Thrust.Levels;
 using Thrust.Systems;
 
 namespace Thrust.Characters
@@ -18,6 +19,13 @@ namespace Thrust.Characters
 		[Export] public float RotationTorque = 900f;
 		[Export] public float MaxLinearSpeed = 160f;
 		[Export] public float MaxAngularSpeed = 100f;
+
+		// COLLISION
+		[Export] public float SafeImpactSpeed = 60f;
+		[Export] public float DamagePerSpeed = 0.5f;
+		[Export] public float DamageCooldown = 0.5f;
+		private Vector2 _lastVelocity;
+		private float _damageCooldownLeft;
 		
 		// COMBAT
 		[Export] private Gun _gun ;
@@ -99,6 +107,10 @@ namespace Thrust.Characters
 			ApplyRocketSize();
 			CurrentHealth = MaxHealth;
 			Fuel = _maxFuel;
+
+			ContactMonitor = true;
+			MaxContactsReported = 4;
+			BodyEntered += OnBodyEntered;
 		}
 
 		private void ApplyRocketSize()
@@ -181,6 +193,9 @@ namespace Thrust.Characters
 			{
 				_gun.Fire(-GlobalTransform.Y);
 			}
+
+			_lastVelocity = LinearVelocity;
+			_damageCooldownLeft -= (float)delta;
 		}
 
 		public override void _IntegrateForces(
@@ -204,6 +219,20 @@ namespace Thrust.Characters
 					maxAngularRadians
 				);
 			}
+		}
+
+		private void OnBodyEntered(Node body)
+		{
+			if (body is LandingPad || _damageCooldownLeft > 0f)
+				return;
+
+			float impact = _lastVelocity.Length();
+			if (impact <= SafeImpactSpeed)
+				return;
+
+			float damage = (impact - SafeImpactSpeed) * DamagePerSpeed;
+			TakeDamage((int) damage);
+			_damageCooldownLeft = DamageCooldown;
 		}
 
 		#region Accessors

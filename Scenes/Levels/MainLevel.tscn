@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://rqmwsur4ifx0" path="res://Art/Characters/Crate.png" id="7_sx5r3"]
 [ext_resource type="Texture2D" uid="uid://d3rdbd1hu1k61" path="res://Art/HealthBar/healthbar_progress_blue.png" id="8_gkceq"]
 [ext_resource type="Script" uid="uid://r3kkpmpyss1u" path="res://Scenes/Levels/FuelBar.cs" id="9_gkceq"]
-[ext_resource type="PackedScene" uid="uid://b2sl1w747gcp6" path="res://Scenes/Effects/EffectPlayer.tscn" id="13_effpl"]
 [ext_resource type="Script" uid="uid://cd3mxnmexseyk" path="res://Code/DeliveryPad.cs" id="12_7woyo"]
+[ext_resource type="PackedScene" uid="uid://b2sl1w747gcp6" path="res://Scenes/Effects/EffectPlayer.tscn" id="13_effpl"]
 
 [node name="MainLevel" type="Node2D" unique_id=1186891382]
 
@@ -23,12 +23,13 @@ position = Vector2(15, -1)
 z_index = 10
 position = Vector2(-18, 50)
 collision_mask = 3
-gravity_scale = 0.08
+gravity_scale = 0.06
 linear_damp = 0.04
 angular_damp = 4.0
 RotationTorque = 3000.0
 MaxLinearSpeed = 180.0
 MaxAngularSpeed = 300.0
+SafeImpactSpeed = 80.0
 _fuelConsumptionRate = 2.0
 RocketSize = 0.65
 
@@ -112,7 +113,6 @@ position = Vector2(2709, 139)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("7_sx5r3")
 
-
 [node name="EffectPlayer" parent="." unique_id=324544998 instance=ExtResource("13_effpl")]
 
 [node name="LandingPad2" parent="." unique_id=20506285 instance=ExtResource("3_lnwy5")]
@@ -125,7 +125,6 @@ MaxLandingSpeed = 20.0
 MaxAngularSpeed = 10.0
 MaxUprightAngle = 15.0
 RequiredStableTime = 2.0
-
 
 [connection signal="CargoLoaded" from="LandingPad" to="LandingNotification/SuccessLabel" method="hide"]
 [connection signal="CargoLoaded" from="LandingPad" to="CargoNotification/CargoLabel" method="show"]
